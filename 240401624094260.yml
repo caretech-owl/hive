@@ -1,3 +1,2 @@
-services:
-  chatbot:
-    image: "ghcr.io/open-webui/open-webui:ollama"
+compose:
+  - compose/chatbot.yml
