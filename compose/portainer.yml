@@ -8,5 +8,5 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "cops_portainer_data:/data"
 volumes:
-  cops_portainer:
-    cops_portainer_data: local
+  cops_portainer_data:
+    driver: local
