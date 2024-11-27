@@ -1,0 +1,12 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:2.21.4
+    ports:
+      - "3000:8000"
+      - "9443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "cops_portainer_data:/data"
+volumes:
+  cops_portainer:
+    cops_portainer_data: local
