@@ -1,2 +1,6 @@
 compose:
   - compose/portainer.yml
+endpoints:
+  - name: Portainer User GUI
+    protocol: https
+    port: 9443
