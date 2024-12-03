@@ -2,7 +2,7 @@ compose:
   - compose/gerd.yml
 endpoints:
   - name: GERD User GUI
-    protocol: https
+    protocol: http
     port: 7860
 environment:
   LLAMA_CPP_VERSION: "full"
