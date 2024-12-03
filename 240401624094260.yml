@@ -1,6 +1,8 @@
 compose:
-  - compose/portainer.yml
+  - compose/gerd.yml
 endpoints:
-  - name: Portainer User GUI
+  - name: GERD User GUI
     protocol: https
-    port: 9443
+    port: 7860
+environment:
+  LLAMA_CPP_VERSION: "full"

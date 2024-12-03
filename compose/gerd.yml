@@ -1,0 +1,40 @@
+services:
+  llama-cpp:
+    container_name: llama-cpp
+    image: ghcr.io/ggerganov/llama.cpp:${LLAMA_CPP_VERSION:-server}
+    expose:
+      - "8000"
+    environment:
+      LLAMA_CACHE: "/models"
+      LLAMA_ARG_HOST: "0.0.0.0"
+      LLAMA_ARG_PORT: "8000"
+    entrypoint:
+      - "./llama-server" 
+      - "--hf-repo"
+      - "Qwen/Qwen2-0.5B-Instruct-GGUF"
+      - "--hf-file"
+      - "qwen2-0_5b-instruct-q8_0.gguf"
+    volumes:
+      - cto-llm-storage:/models
+
+  gerd:
+    container_name: gerd
+    image: local/gerd
+    ports:
+      - "7860:7860"
+    environment:
+      gerd_qa_model__endpoint__url: "http://llama-cpp:8000"
+      gerd_qa_model__endpoint__type: "llama.cpp"
+      HF_HOME: "/workspace/hf"
+    volumes:
+      - cto-hf-home:/workspace/hf
+
+networks:
+  default:
+    name: caretech-docker
+
+volumes:
+  cto-llm-storage:
+    driver: local
+  cto-hf-home:
+    driver: local
