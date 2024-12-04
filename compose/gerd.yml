@@ -1,7 +1,7 @@
 services:
   llama-cpp:
     container_name: llama-cpp
-    image: ghcr.io/ggerganov/llama.cpp:${LLAMA_CPP_VERSION:-server}
+    image: ghcr.io/ggerganov/llama.cpp:${LLAMA_CPP_VERSION}
     expose:
       - "8000"
     environment:
@@ -19,7 +19,7 @@ services:
 
   gerd:
     container_name: gerd
-    image: ghcr.io/caretech-owl/gerd:${GERD_VERSION:-latest}
+    image: ghcr.io/caretech-owl/gerd:${GERD_VERSION}
     ports:
       - "7860:7860"
     environment:

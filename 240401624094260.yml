@@ -7,3 +7,4 @@ endpoints:
     port: 7860
 environment:
   LLAMA_CPP_VERSION: "full"
+  GERD_VERSION: "latest"
