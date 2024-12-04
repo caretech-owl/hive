@@ -19,7 +19,7 @@ services:
 
   gerd:
     container_name: gerd
-    image: local/gerd
+    image: ghcr.io/caretech-owl/gerd:${GERD_VERSION:-latest}
     ports:
       - "7860:7860"
     environment:
