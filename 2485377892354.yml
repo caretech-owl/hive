@@ -8,5 +8,5 @@ endpoints:
 environment:
   LLAMA_CPP_VERSION: "r35.4.1"
   GERD_VERSION: "latest"
-  GGUF_FILE: "qwen2-0_5b-instruct-q8_0.gguf"
-  HF_REPO: "Qwen/Qwen2-0.5B-Instruct-GGUF"
+  GGUF_FILE: "Hermes-3-Llama-3.1-8B.Q5_K_M.gguf"
+  HF_REPO: "NousResearch/Hermes-3-Llama-3.1-8B-GGUF"
