@@ -31,6 +31,6 @@ networks:
 
 volumes:
   cto-llm-storage:
-    driver: external
+    driver: local
   cto-hf-home:
-    driver: external
+    driver: local
