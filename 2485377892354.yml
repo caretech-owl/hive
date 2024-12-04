@@ -1,10 +1,12 @@
 # jetson XXXX872
 compose:
-  - compose/gerd.yml
+  - compose/gerd_jetson.yml
 endpoints:
   - name: GERD User GUI
     protocol: http
     port: 7860
 environment:
-  LLAMA_CPP_VERSION: "server-cuda"
+  LLAMA_CPP_VERSION: "r35.4.1"
   GERD_VERSION: "latest"
+  GGUF_FILE: "qwen2-0_5b-instruct-q8_0.gguf"
+  HF_REPO: "Qwen/Qwen2-0.5B-Instruct-GGUF"
