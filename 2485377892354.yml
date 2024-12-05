@@ -10,3 +10,4 @@ environment:
   GERD_VERSION: "latest"
   GGUF_FILE: "Hermes-3-Llama-3.1-8B.Q5_K_M.gguf"
   HF_REPO: "NousResearch/Hermes-3-Llama-3.1-8B-GGUF"
+  MODEL_ARGS: "--gpu-layers 30 --n-gpu-layers 999 --ctx-size 1024 --threads $(nproc)"

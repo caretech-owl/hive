@@ -9,7 +9,7 @@ services:
       - "/bin/sh"
       - "-c"
       - "huggingface-cli download ${HF_REPO} ${GGUF_FILE} --cache-dir /root/.cache/llama.cpp --local-dir /root/.cache/llama.cpp;\
-         llama-server -m /root/.cache/llama.cpp/${GGUF_FILE} --gpu-layers 30 --host 0.0.0.0"
+         llama-server -m /root/.cache/llama.cpp/${GGUF_FILE} --host 0.0.0.0 {MODEL_ARGS}"
 
     volumes:
       - cto-llm-storage:/root/.cache/llama.cpp
