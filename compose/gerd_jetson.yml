@@ -2,24 +2,23 @@ services:
   llama-cpp:
     container_name: llama-cpp
     image: dustynv/llama_cpp:${LLAMA_CPP_VERSION}
-    expose:
-      - "8080"
-    runtime: nvidia      
+    ports:
+      - "8000:8000"
     entrypoint:
       - "/bin/sh"
       - "-c"
       - "huggingface-cli download ${HF_REPO} ${GGUF_FILE} --cache-dir /root/.cache/llama.cpp --local-dir /root/.cache/llama.cpp;\
-         llama-server -m /root/.cache/llama.cpp/${GGUF_FILE} --host 0.0.0.0 {MODEL_ARGS}"
-
+         llama-server -m /root/.cache/llama.cpp/${GGUF_FILE} --port 8000 --host 0.0.0.0 ${MODEL_ARGS}"
     volumes:
       - cto-llm-storage:/root/.cache/llama.cpp
+    runtime: nvidia
   gerd:
     container_name: gerd
     image: ghcr.io/caretech-owl/gerd:${GERD_VERSION}
     ports:
       - "7860:7860"
     environment:
-      gerd_qa_model__endpoint__url: "http://llama-cpp:8080"
+      gerd_qa_model__endpoint__url: "http://llama-cpp:8000"
       gerd_qa_model__endpoint__type: "llama.cpp"
       HF_HOME: "/workspace/hf"
     volumes:

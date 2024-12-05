@@ -2,9 +2,17 @@
 compose:
   - compose/gerd.yml
 endpoints:
-  - name: GERD User GUI
+  - name: Dokumente analysieren
     protocol: http
     port: 7860
+    icon: find_in_page
+  - name: Chat mit Sprachmodell
+    protocol: http
+    port: 8000
+    icon: chat
 environment:
-  LLAMA_CPP_VERSION: "full"
+  LLAMA_CPP_VERSION: "full-b4237"
   GERD_VERSION: "latest"
+  GGUF_FILE: "qwen2-0_5b-instruct-q2_k.gguf"
+  HF_REPO: "Qwen/Qwen2-0.5B-Instruct-GGUF"
+  MODEL_ARGS: "--ctx-size 1024 --threads $(nproc)"

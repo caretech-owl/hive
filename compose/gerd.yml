@@ -2,18 +2,13 @@ services:
   llama-cpp:
     container_name: llama-cpp
     image: ghcr.io/ggerganov/llama.cpp:${LLAMA_CPP_VERSION}
-    expose:
-      - "8000"
-    environment:
-      LLAMA_CACHE: "/models"
-      LLAMA_ARG_HOST: "0.0.0.0"
-      LLAMA_ARG_PORT: "8000"
+    ports:
+      - "8000:8000"
     entrypoint:
-      - "./llama-server" 
-      - "--hf-repo"
-      - "Qwen/Qwen2-0.5B-Instruct-GGUF"
-      - "--hf-file"
-      - "qwen2-0_5b-instruct-q8_0.gguf"
+      - "/bin/sh"
+      - "-c"
+      - "huggingface-cli download ${HF_REPO} ${GGUF_FILE} --cache-dir /models --local-dir /models;\
+         ./llama-server -m /models/${GGUF_FILE} --port 8000 --host 0.0.0.0 ${MODEL_ARGS}"
     volumes:
       - cto-llm-storage:/models
 
