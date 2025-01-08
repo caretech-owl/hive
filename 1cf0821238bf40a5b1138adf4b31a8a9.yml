@@ -1,0 +1,4 @@
+compose:
+- compose/gerd.yml
+endpoints: []
+environment: {}
