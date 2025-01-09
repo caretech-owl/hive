@@ -1,0 +1,19 @@
+on:
+  push:
+    branches-ignore:
+    - master
+
+permissions:
+  pull-requests: write
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
+    steps:
+    - uses: actions/checkout@v4
+    - name: create-pull-request
+      run: |
+        gh_pr_up() { gh pr create $* || gh pr edit $* }
+        gh_pr_up --title "${BRANCH_NAME}" --body "Updated files:\n$(git diff --name-only main...)"
