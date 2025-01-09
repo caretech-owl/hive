@@ -13,7 +13,5 @@ jobs:
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
     steps:
     - uses: actions/checkout@v4
-    - name: pull-request
-      run: |
-        gh_pr_up() { gh pr create $* || gh pr edit $* }
-        gh_pr_up --title "My pull request" --body "Description"
+    - name: create-pull-request
+      run: gh pr create --title "${BRANCH_NAME}" --body "This is an automatically generated PR." || true
