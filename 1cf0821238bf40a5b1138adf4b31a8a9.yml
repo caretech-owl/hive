@@ -5,7 +5,7 @@ endpoints:
     protocol: http
     port: 7860
     icon: find_in_page
-  - name: Chat
+  - name: Chatten mit Sprachmodell
     protocol: http
     port: 8000
     icon: chat
