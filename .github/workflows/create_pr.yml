@@ -16,4 +16,4 @@ jobs:
     - name: create-pull-request
       run: |
         gh_pr_up() { gh pr create $* || gh pr edit $* }
-        gh_pr_up --title "${BRANCH_NAME}" --body "Updated files:\n$(git diff --name-only main...)"
+        gh_pr_up --title "${BRANCH_NAME}" --body "This is an auto-generated PR"
