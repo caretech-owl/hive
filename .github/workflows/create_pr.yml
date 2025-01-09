@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: pull-request
-      run: gh pr create --title "My pull request" --body "Description" || gh pr edit --title "My pull request" --body "Description"
+      run: gh pr create --title "${BRANCH_NAME}" --body "This is an automatically generated PR." || true
