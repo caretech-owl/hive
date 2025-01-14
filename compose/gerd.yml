@@ -17,6 +17,7 @@ services:
     image: ghcr.io/caretech-owl/gerd:${GERD_VERSION}
     ports:
       - "7860:7860"
+      - "23232:12121"
     environment:
       gerd_qa_model__endpoint__url: "http://llama-cpp:8000"
       gerd_qa_model__endpoint__type: "llama.cpp"
