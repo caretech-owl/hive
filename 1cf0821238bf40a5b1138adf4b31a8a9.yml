@@ -1,5 +1,6 @@
+# MacBook Pro
 compose:
-- compose/gerd.yml
+  - compose/gerd.yml
 endpoints:
   - name: Dokumente analysieren
     protocol: http
