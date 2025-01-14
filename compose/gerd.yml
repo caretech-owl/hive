@@ -20,7 +20,6 @@ services:
     environment:
       gerd_qa_model__endpoint__url: "http://llama-cpp:8000"
       gerd_qa_model__endpoint__type: "llama.cpp"
-      HF_HOME: "/workspace/hf"
     volumes:
       - cto-hf-home:/workspace/hf
 
