@@ -12,7 +12,7 @@ endpoints:
     icon: chat
 environment:
   LLAMA_CPP_VERSION: "full-b4237"
-  GERD_VERSION: "latest"
+  GERD_VERSION: "0.5"
   GGUF_FILE: "qwen2-0_5b-instruct-q2_k.gguf"
   HF_REPO: "Qwen/Qwen2-0.5B-Instruct-GGUF"
   MODEL_ARGS: "--ctx-size 1024 --threads $(nproc)"
