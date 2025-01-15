@@ -20,6 +20,8 @@ services:
       - "${GRADIO_SERVER_PORT}:${GRADIO_SERVER_PORT}"
     environment:
       GRADIO_SERVER_PORT: "${GRADIO_SERVER_PORT}"
+      gerd_gen_model__endpoint__url: "http://llama-cpp:8000"
+      gerd_gen_model__endpoint__type: "llama.cpp"
       gerd_qa_model__endpoint__url: "http://llama-cpp:8000"
       gerd_qa_model__endpoint__type: "llama.cpp"
     volumes:
