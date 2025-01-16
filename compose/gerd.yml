@@ -24,8 +24,10 @@ services:
       gerd_gen_model__endpoint__type: "llama.cpp"
       gerd_qa_model__endpoint__url: "http://llama-cpp:8000"
       gerd_qa_model__endpoint__type: "llama.cpp"
+      gerd_lora_output_dir: "/workspace/loras/lora"
     volumes:
       - cto-hf-home:/workspace/hf
+      - cto-loras-storage:/workspace/loras
 
 networks:
   default:
@@ -33,6 +35,8 @@ networks:
 
 volumes:
   cto-llm-storage:
+    driver: local
+  cto-loras-storage:
     driver: local
   cto-hf-home:
     driver: local
