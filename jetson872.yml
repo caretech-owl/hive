@@ -15,5 +15,5 @@ environment:
   GGUF_FILE: qwen2-0_5b-instruct-q2_k.gguf
   GRADIO_SERVER_PORT: '23232'
   HF_REPO: Qwen/Qwen2-0.5B-Instruct-GGUF
-  LLAMA_CPP_VERSION: r36.4.0
+  LLAMA_CPP_VERSION: 0.3.7-r36.4.0
   MODEL_ARGS: --gpu-layers 30 --n-gpu-layers 999 --ctx-size 1024 --threads $(nproc)
