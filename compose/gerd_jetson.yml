@@ -14,15 +14,22 @@ services:
     runtime: nvidia
   gerd:
     container_name: gerd
-    image: ghcr.io/caretech-owl/gerd:${GERD_VERSION}
+    image: ghcr.io/caretech-owl/gerd-jetson:${GERD_VERSION}
     ports:
       - "7860:7860"
+      - ${GRADIO_SERVER_PORT}:${GRADIO_SERVER_PORT}
     environment:
-      gerd_qa_model__endpoint__url: "http://llama-cpp:8000"
-      gerd_qa_model__endpoint__type: "llama.cpp"
+      GRADIO_SERVER_PORT: "${GRADIO_SERVER_PORT}"
       HF_HOME: "/workspace/hf"
+      gerd_gen_model__endpoint__type: "llama.cpp"
+      gerd_gen_model__endpoint__url: "http://llama-cpp:8000"
+      gerd_lora_output_dir: "/workspace/loras/lora"
+      gerd_qa_model__endpoint__type: "llama.cpp"
+      gerd_qa_model__endpoint__url: "http://llama-cpp:8000"
     volumes:
       - cto-hf-home:/workspace/hf
+      - cto-loras-storage:/workspace/loras
+    runtime: nvidia
 
 networks:
   default:
@@ -32,4 +39,6 @@ volumes:
   cto-llm-storage:
     driver: local
   cto-hf-home:
+    driver: local
+  cto-loras-storage:
     driver: local
