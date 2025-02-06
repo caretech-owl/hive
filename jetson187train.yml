@@ -1,0 +1,11 @@
+compose:
+- compose/gerd_jetson_train.yml
+endpoints:
+- icon: hub
+  name: GERD Router
+  port: 7860
+  protocol: http
+environment:
+  GERD_VERSION: latest
+  GRADIO_SERVER_PORT: '23232'
+  MODEL_ARGS: --gpu-layers 30 --n-gpu-layers 999 --ctx-size 1024 --threads $(nproc)

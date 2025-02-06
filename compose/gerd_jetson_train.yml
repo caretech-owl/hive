@@ -1,0 +1,23 @@
+networks:
+  default:
+    name: caretech-docker
+services:
+  gerd:
+    environment:
+      GRADIO_SERVER_PORT: ${GRADIO_SERVER_PORT}
+      HF_HOME: /workspace/hf
+      gerd_gen_model__gpu_layers: '30'
+      gerd_lora_output_dir: /workspace/loras/lora
+    image: ghcr.io/caretech-owl/gerd-jetson:${GERD_VERSION}
+    ports:
+    - 7860:7860
+    - ${GRADIO_SERVER_PORT}:${GRADIO_SERVER_PORT}
+    runtime: nvidia
+    volumes:
+    - cto-hf-home:/workspace/hf
+    - cto-loras-storage:/workspace/loras
+volumes:
+  cto-hf-home:
+    driver: local
+  cto-loras-storage:
+    driver: local
